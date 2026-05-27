@@ -13,7 +13,7 @@ struct Question {
     string content;    // Nội dung câu hỏi
     string A, B, C, D; // 4 đáp án lựa chọn
     char correctAns;   // Đáp án đúng (A/B/C/D)
-    string difficulty; // Độ khó (De/Kho)
+    string difficulty; // Độ khó (Dễ/Khó)
 };
 
 // Cấu trúc một Node trong Danh sách liên kết đơn
@@ -117,7 +117,7 @@ public:
     }
 };
 
-// Thuật toán xáo trộn Fisher-Yates viết chay cho mảng các con trỏ câu hỏi (Sinh đề thi ngẫu nhiên)
+// Thuật toán xáo trộn Fisher-Yates viết tay cho mảng các con trỏ câu hỏi (Sinh đề thi ngẫu nhiên)
 void shuffleQuestions(Question* arr[], int n) {
     for (int i = n - 1; i > 0; i--) {
         int j = rand() % (i + 1);
@@ -127,7 +127,7 @@ void shuffleQuestions(Question* arr[], int n) {
     }
 }
 
-// Thuật toán xáo trộn Fisher-Yates viết chay cho mảng chuỗi (Xáo trộn thứ tự đáp án A, B, C, D)
+// Thuật toán xáo trộn Fisher-Yates viết tay cho mảng chuỗi (Xáo trộn thứ tự đáp án A, B, C, D)
 void shuffleAnswers(string arr[], int n) {
     for (int i = n - 1; i > 0; i--) {
         int j = rand() % (i + 1);
@@ -141,7 +141,7 @@ void shuffleAnswers(string arr[], int n) {
 void saveReport(string filename, string name, int score, int total) {
     ofstream file(filename, ios::app);
     if (file.is_open()) {
-        file << "Nguoi thi: " << name << " | Diem: " << score << "/" << total << "\n";
+        file << "Người thi: " << name << " | Điểm: " << score << "/" << total << "\n";
         file.close();
     }
 }
@@ -158,48 +158,48 @@ int main() {
 
     int choice;
     do {
-        cout << "\n=== CHUONG TRINH THI TRAC NGHIEM ===\n";
-        cout << "1. Nhap them cau hoi tu ban phim (Luu vao file text)\n";
-        cout << "2. Thuc hien thi trac nghiem (Sinh de, Xao tron & Tinh gio)\n";
-        cout << "3. Xem bao cao ket qua cac lan thi\n";
-        cout << "0. Thoat chuong trinh\n";
-        cout << "Chon chuc nang: ";
+        cout << "\n=== CHƯƠNG TRÌNH THI TRẮC NGHIỆM ===\n";
+        cout << "1. Nhập thêm câu hỏi từ bàn phím (Lưu vào file text)\n";
+        cout << "2. Thực hiện thi trắc nghiệm (Sinh đề, Xáo trộn & Tính giờ)\n";
+        cout << "3. Xem báo cáo kết quả các lần thi\n";
+        cout << "0. Thoát chương trình\n";
+        cout << "Chọn chức năng: ";
         cin >> choice;
         cin.ignore();
 
         if (choice == 1) {
             Question q;
-            cout << "\n--- CHUC NANG: NHAP CAU HOI MOI ---\n";
-            cout << "ID cau hoi (So nguyen): "; cin >> q.id; cin.ignore();
-            cout << "Mon / Hoc phan: "; getline(cin, q.subject);
-            cout << "Noi dung cau hoi: "; getline(cin, q.content);
-            cout << "Dap an A: "; getline(cin, q.A);
-            cout << "Dap an B: "; getline(cin, q.B);
-            cout << "Dap an C: "; getline(cin, q.C);
-            cout << "Dap an D: "; getline(cin, q.D);
-            cout << "Dap an dung (Go ky tu A hoac B hoac C hoac D): "; cin >> q.correctAns; cin.ignore();
-            cout << "Do kho (De/Kho): "; getline(cin, q.difficulty);
+            cout << "\n--- CHỨC NĂNG: NHẬP CÂU HỎI MỚI ---\n";
+            cout << "ID câu hỏi (Số nguyên): "; cin >> q.id; cin.ignore();
+            cout << "Môn / Học phần: "; getline(cin, q.subject);
+            cout << "Nội dung câu hỏi: "; getline(cin, q.content);
+            cout << "Đáp án A: "; getline(cin, q.A);
+            cout << "Đáp án B: "; getline(cin, q.B);
+            cout << "Đáp án C: "; getline(cin, q.C);
+            cout << "Đáp án D: "; getline(cin, q.D);
+            cout << "Đáp án đúng (Gõ ký tự A hoặc B hoặc C hoặc D): "; cin >> q.correctAns; cin.ignore();
+            cout << "Độ khó (Dễ/Khó): "; getline(cin, q.difficulty);
             
             bank.addQuestion(q);
             bank.saveToFile(qFile);
             
-            cout << "=> He thong da luu cau hoi moi xuong file '" << qFile << "' thanh cong!\n";
+            cout << "=> Hệ thống đã lưu câu hỏi mới xuống file '" << qFile << "' thành công!\n";
         }
         else if (choice == 2) {
             bank.loadFromFile(qFile);
 
             if (bank.size == 0) {
-                cout << "=> Thong bao: Ngan hang cau hoi dang trong hoac thieu file '" << qFile << "'!\n";
-                cout << "=> Hay dung tinh nang 1 de nap cau hoi hoac kiem tra thu muc chua chuong trinh.\n";
+                cout << "=> Thông báo: Ngân hàng câu hỏi đang trống hoặc thiếu file '" << qFile << "'!\n";
+                cout << "=> Hãy dùng tính năng 1 để nạp câu hỏi hoặc kiểm tra thư mục chứa chương trình.\n";
                 continue;
             }
 
             string name;
             int numQ, timeLimit;
-            cout << "\n--- CHUC NANG: THUC HIEN THI TRAC NGHIEM ---\n";
-            cout << "Nhap ten nguoi tham gia thi: "; getline(cin, name);
-            cout << "Nhap so luong cau hoi muon thi (Hien co " << bank.size << " cau): "; cin >> numQ;
-            cout << "Nhap thoi gian lam bai dinh muc (Don vi: giay): "; cin >> timeLimit;
+            cout << "\n--- CHỨC NĂNG: THỰC HIỆN THI TRẮC NGHIỆM ---\n";
+            cout << "Nhập tên người tham gia thi: "; getline(cin, name);
+            cout << "Nhập số lượng câu hỏi muốn thi (Hiện có " << bank.size << " câu): "; cin >> numQ;
+            cout << "Nhập thời gian làm bài định mức (Đơn vị: giây): "; cin >> timeLimit;
             cin.ignore();
 
             if (numQ > bank.size) numQ = bank.size;
@@ -220,7 +220,7 @@ int main() {
                 time_t currentTime = time(0);
                 
                 if (currentTime - startTime >= timeLimit) {
-                    cout << "\n*** QUA THOI GIAN LAM BAI! HE THONG TU DONG THU BAI ***\n";
+                    cout << "\n*** QUÁ THỜI GIAN LÀM BÀI! HỆ THỐNG TỰ ĐỘNG THU BÀI ***\n";
                     break;
                 }
 
@@ -242,13 +242,13 @@ int main() {
                     }
                 }
 
-                cout << "\nCau " << i + 1 << " [" << examQuestions[i]->subject << " - " << examQuestions[i]->difficulty << "]: " << examQuestions[i]->content << "\n";
+                cout << "\nCâu " << i + 1 << " [" << examQuestions[i]->subject << " - " << examQuestions[i]->difficulty << "]: " << examQuestions[i]->content << "\n";
                 cout << "A. " << ansArr[0] << "\n";
                 cout << "B. " << ansArr[1] << "\n";
                 cout << "C. " << ansArr[2] << "\n";
                 cout << "D. " << ansArr[3] << "\n";
                 
-                cout << "Tra loi (Thoi gian con lai " << timeLimit - (currentTime - startTime) << " giay): ";
+                cout << "Trả lời (Thời gian còn lại " << timeLimit - (currentTime - startTime) << " giây): ";
                 char ans;
                 cin >> ans;
                 
@@ -260,21 +260,21 @@ int main() {
     double phanTram = (double)score / numQ * 100;
 
     cout << "\n============================================\n";
-    cout << "   🎉 KET THUC BAI THI TRAC NGHIEM 🎉\n";
+    cout << "   🎉 KẾT THÚC BÀI THI TRẮC NGHIỆM 🎉\n";
     cout << "============================================\n";
-    cout << "Thi sinh: " << name << "\n";
-    cout << "Ket qua dat duoc: " << score << "/" << numQ << " cau dung.\n";
-    cout << "Ty le chinh xac: " << phanTram << "%\n";
-    cout << "Danh gia: ";
+    cout << "Thí sinh: " << name << "\n";
+    cout << "Kết quả đạt được: " << score << "/" << numQ << " câu đúng.\n";
+    cout << "Tỷ lệ chính xác: " << phanTram << "%\n";
+    cout << "Đánh giá: ";
 
     if (phanTram == 100) {
-        cout << "🥇 Xuat sac tuyet doi! Hurayyy, ban lam tot qua dioo~ ✨💖\n";
+        cout << "🥇 Xuất sắc tuyệt đối! Hurayyy, bạn làm tốt quá dioo~ ✨💖\n";
     } else if (phanTram >= 80) {
-        cout << "🌟 Sieu cap dinh cao! Ban hoc bai ky lam dung khong ne? Qua gioi! 🎉\n";
+        cout << "🌟 Siêu cấp đỉnh cao! Bạn học bài kỹ lắm đúng không nè? Quá giỏi! 🎉\n";
     } else if (phanTram >= 50) {
-        cout << "👍 Ket qua rat tot nhe! Co len mot xiu nua la dat diem toi da luon ruii~ 🥰\n";
+        cout << "👍 Kết quả rất tốt nhé! Cố lên một xíu nữa là đạt điểm tối đa luôn rùi~ 🥰\n";
     } else {
-        cout << "💪 Khong sao het ne, van con nhieu co hoi ma! Om mot cai lay dong luc roi lan sau lam lai tot hon nhaaa~ 💕\n";
+        cout << "💪 Không sao hết nè, vẫn còn nhiều cơ hội mà! Ôm một cái lấy động lực rồi lần sau làm lại tốt hơn nhaaa~ 💕\n";
     }
     cout << "============================================\n";
 
@@ -282,10 +282,10 @@ int main() {
     delete[] examQuestions;
         }
         else if (choice == 3) {
-            cout << "\n=== BAO CAO KET QUA LICH SU CAC LAN THI ===\n";
+            cout << "\n=== BÁO CÁO KẾT QUẢ LỊCH SỬ CÁC LẦN THI ===\n";
             ifstream file(rFile);
             if (!file.is_open()) {
-                cout << "=> Chua co bat ky du lieu lich su thi nao duoc ghi nhan trong he thong.\n";
+                cout << "=> Chưa có bất kỳ dữ liệu lịch sử thi nào được ghi nhận trong hệ thống.\n";
             } else {
                 string line;
                 while (getline(file, line)) {
