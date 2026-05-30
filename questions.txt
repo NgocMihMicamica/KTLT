@@ -367,3 +367,12 @@ Vì chúng ta đã quá lười để kiểm tra kỹ
 Vì sự cô đơn là bản chất của tất
 A
 Dễ
+100
+KTLT
+Ngôn ngữ nào phổ biến nhất hiện nay
+Python
+Rust
+C++
+Java
+C
+Khó
