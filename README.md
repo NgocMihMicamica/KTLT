@@ -1,4 +1,4 @@
-# 🚀 HƯỚNG DẪN CHẠY ĐỒ ÁN TRỰC TUYẾN TRÊN TRÌNH DUYỆT
+# 🚀 HƯỚNG DẪN CHẠY CHƯƠNG TRÌNH TRỰC TUYẾN TRÊN TRÌNH DUYỆT
 
 Để chạy chương trình thi trắc nghiệm này ngay lập tức mà không cần cài đặt phần mềm, bạn làm theo 3 bước sau:
 
