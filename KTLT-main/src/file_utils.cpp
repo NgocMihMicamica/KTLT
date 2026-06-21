@@ -7,6 +7,8 @@
 #include <unistd.h>
 #endif
 
+#include "file_utils.h"
+
 using namespace std;
 
 bool fileExists(const string& filename) {
@@ -49,9 +51,9 @@ string getExecutableDirectory() {
 string resolveDataFile(const string& filename) {
     string executableDirectory = getExecutableDirectory();
     string executableFile = joinPath(executableDirectory, filename);
-    if (fileExists(executableFile)) return executableFile;
-    if (!executableDirectory.empty()) return executableFile;
+    if (!executableDirectory.empty() && fileExists(executableFile)) return executableFile;
 
     if (fileExists(filename)) return filename;
+    if (!executableDirectory.empty()) return executableFile;
     return filename;
 }

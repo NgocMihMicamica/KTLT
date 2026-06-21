@@ -1,0 +1,19 @@
+{
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": true,
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt UTF-8": {
+            "path": "cmd.exe",
+            "args": [
+                "/K",
+                "chcp 65001 > nul"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt UTF-8",
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.executorMap": {
+        "cpp": "cd /d \"$dir\" && chcp 65001 > nul && C:\\msys64\\ucrt64\\bin\\g++.exe -std=c++17 -finput-charset=UTF-8 -fexec-charset=UTF-8 \"$fileName\" -o \"$fileNameWithoutExt.exe\" && .\\$fileNameWithoutExt.exe"
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build bai5",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/d",
+                "/c",
+                "chcp 65001 > nul && C:\\msys64\\ucrt64\\bin\\g++.exe -std=c++17 -Iinclude -finput-charset=UTF-8 -fexec-charset=UTF-8 -Wall -Wextra -pedantic src\\bai5.cpp src\\app.cpp src\\console_utils.cpp src\\exam.cpp src\\file_utils.cpp src\\input_utils.cpp src\\question.cpp src\\question_list.cpp src\\report.cpp src\\text_utils.cpp -o bai5.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Run bai5",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/d",
+                "/c",
+                "chcp 65001 > nul && .\\bai5.exe"
+            ],
+            "dependsOn": "Build bai5",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build project",
+            "command": "C:/msys64/ucrt64/bin/g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-std=c++17",
+                "-Iinclude",
+                "-finput-charset=UTF-8",
+                "-fexec-charset=UTF-8",
+                "-g",
+                "src/bai5.cpp",
+                "src/app.cpp",
+                "src/console_utils.cpp",
+                "src/exam.cpp",
+                "src/file_utils.cpp",
+                "src/input_utils.cpp",
+                "src/question.cpp",
+                "src/question_list.cpp",
+                "src/report.cpp",
+                "src/text_utils.cpp",
+                "-o",
+                "${workspaceFolder}\\bai5.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Build all source files in the project."
+        }
+    ]
+}

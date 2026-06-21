@@ -1,25 +1,10 @@
 #include <cstdlib>
 #include <string>
 
+#include "question.h"
+#include "text_utils.h"
+
 using namespace std;
-
-struct Question {
-    int id;
-    string subject;
-    string content;
-    string A, B, C, D;
-    char correctAns;
-    string difficulty;
-};
-
-struct AnswerOption {
-    string text;
-    char originalOption;
-};
-
-string trimAsciiWhitespace(const string& text);
-char toUpperAscii(char c);
-bool equalsIgnoreCaseAscii(const string& a, const string& b);
 
 char normalizeAnswer(char ans) {
     return toUpperAscii(ans);

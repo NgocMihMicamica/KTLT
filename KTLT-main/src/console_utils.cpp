@@ -6,6 +6,8 @@
 #include <windows.h>
 #endif
 
+#include "console_utils.h"
+
 using namespace std;
 
 #ifdef _WIN32

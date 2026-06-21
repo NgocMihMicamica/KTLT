@@ -1,34 +1,11 @@
 #include <fstream>
 #include <string>
 
+#include "question.h"
+#include "question_list.h"
+#include "text_utils.h"
+
 using namespace std;
-
-struct Question {
-    int id;
-    string subject;
-    string content;
-    string A, B, C, D;
-    char correctAns;
-    string difficulty;
-};
-
-struct Node {
-    Question data;
-    Node* next;
-};
-
-struct QuestionList {
-    Node* head;
-    int size;
-};
-
-string removeUtf8Bom(const string& text);
-string trimAsciiWhitespace(const string& text);
-bool parseIntegerString(const string& text, int& value);
-
-char normalizeAnswer(char ans);
-string normalizeDifficulty(const string& difficulty);
-bool isValidQuestion(const Question& q);
 
 void initQuestionList(QuestionList& list) {
     list.head = nullptr;

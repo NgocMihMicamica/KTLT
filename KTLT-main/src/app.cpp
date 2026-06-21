@@ -3,26 +3,15 @@
 #include <iostream>
 #include <string>
 
+#include "app.h"
+#include "console_utils.h"
+#include "exam.h"
+#include "file_utils.h"
+#include "input_utils.h"
+#include "question_list.h"
+#include "report.h"
+
 using namespace std;
-
-struct Node;
-
-struct QuestionList {
-    Node* head;
-    int size;
-};
-
-void setupVietnameseConsole();
-string resolveDataFile(const string& filename);
-
-void initQuestionList(QuestionList& list);
-void clearQuestionList(QuestionList& list);
-bool loadQuestionsFromFile(QuestionList& list, const string& filename);
-
-bool readIntInRange(const string& prompt, int& value, int minValue, int maxValue);
-bool inputNewQuestion(QuestionList& bank, const string& qFile);
-bool takeExam(QuestionList& bank, const string& qFile, const string& rFile);
-void viewReport(const string& rFile);
 
 void printMenu() {
     cout << "\n=== CHƯƠNG TRÌNH THI TRẮC NGHIỆM ===\n";
@@ -36,8 +25,8 @@ int runProgram() {
     setupVietnameseConsole();
     srand((unsigned int)time(0));
 
-    string qFile = resolveDataFile("questions.txt");
-    string rFile = resolveDataFile("report.txt");
+    string qFile = resolveDataFile("data/questions.txt");
+    string rFile = resolveDataFile("data/report.txt");
 
     QuestionList bank;
     initQuestionList(bank);

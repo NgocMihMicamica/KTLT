@@ -1,4 +1,4 @@
-int runProgram();
+#include "app.h"
 
 int main() {
     return runProgram();

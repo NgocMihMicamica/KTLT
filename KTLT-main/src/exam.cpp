@@ -2,56 +2,13 @@
 #include <iostream>
 #include <string>
 
+#include "exam.h"
+#include "input_utils.h"
+#include "question.h"
+#include "question_list.h"
+#include "report.h"
+
 using namespace std;
-
-struct Question {
-    int id;
-    string subject;
-    string content;
-    string A, B, C, D;
-    char correctAns;
-    string difficulty;
-};
-
-struct AnswerOption {
-    string text;
-    char originalOption;
-};
-
-struct Node {
-    Question data;
-    Node* next;
-};
-
-struct QuestionList {
-    Node* head;
-    int size;
-};
-
-enum TimedAnswerStatus {
-    ANSWER_READ_OK,
-    ANSWER_READ_TIMEOUT,
-    ANSWER_READ_EOF
-};
-
-char normalizeAnswer(char ans);
-void shuffleQuestions(Question* arr[], int n);
-void shuffleAnswers(AnswerOption arr[], int n);
-
-bool loadQuestionsFromFile(QuestionList& list, const string& filename);
-bool containsQuestionId(QuestionList& list, int id);
-void addQuestion(QuestionList& list, const Question& q);
-bool appendQuestionToFile(const string& filename, const Question& q);
-
-bool readIntInRange(const string& prompt, int& value, int minValue, int maxValue);
-bool readIntAtLeast(const string& prompt, int& value, int minValue);
-bool readNonEmptyLine(const string& prompt, string& value);
-bool readAnswerInput(const string& prompt, char& answer);
-bool readDifficultyInput(const string& prompt, string& difficulty);
-TimedAnswerStatus readAnswerInputWithTimer(const string& prompt, char& answer,
-                                           time_t startTime, int timeLimit);
-
-void saveReport(const string& filename, const string& name, int score, int total);
 
 bool inputNewQuestion(QuestionList& bank, const string& qFile) {
     Question q;

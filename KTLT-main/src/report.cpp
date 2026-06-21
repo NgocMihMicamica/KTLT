@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 
+#include "report.h"
+#include "text_utils.h"
+
 using namespace std;
 
 struct ReportRecord {
@@ -11,10 +14,6 @@ struct ReportRecord {
     int total;
     double percent;
 };
-
-string removeUtf8Bom(const string& text);
-string trimAsciiWhitespace(const string& text);
-bool parseIntegerString(const string& text, int& value);
 
 bool parseReportLine(const string& line, ReportRecord& record) {
     string cleanLine = trimAsciiWhitespace(removeUtf8Bom(line));

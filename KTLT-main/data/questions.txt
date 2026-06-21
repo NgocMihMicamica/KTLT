@@ -1,0 +1,45 @@
+1
+Kỹ thuật lập trình
+Từ khóa nào dùng để khai báo hằng số trong C++?
+const
+static
+class
+public
+A
+Dễ
+2
+Kỹ thuật lập trình
+Cấu trúc dữ liệu nào gồm các node liên kết với nhau bằng con trỏ?
+Mảng
+Danh sách liên kết
+Ngăn xếp tĩnh
+Biến toàn cục
+B
+Dễ
+3
+Kỹ thuật lập trình
+Hàm nào thường được dùng để đọc một dòng văn bản trong C++?
+cin >> x
+getline
+printf
+scanf
+B
+Dễ
+4
+Kỹ thuật lập trình
+Khi cấp phát mảng động bằng new[], thao tác giải phóng phù hợp là gì?
+delete
+delete[]
+free
+clear
+B
+Khó
+5
+Kỹ thuật lập trình
+Trong chương trình này, file report.txt dùng để làm gì?
+Lưu câu hỏi
+Lưu lịch sử kết quả thi
+Lưu mã nguồn
+Lưu cấu hình compiler
+B
+Dễ

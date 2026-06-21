@@ -1,5 +1,7 @@
 #include <string>
 
+#include "text_utils.h"
+
 using namespace std;
 
 string removeUtf8Bom(const string& text) {

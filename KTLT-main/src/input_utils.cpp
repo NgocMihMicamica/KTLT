@@ -12,20 +12,12 @@
 #include <unistd.h>
 #endif
 
+#include "input_utils.h"
+#include "question.h"
+
 using namespace std;
 
 const int INPUT_IGNORE_LIMIT = 10000;
-
-enum TimedAnswerStatus {
-    ANSWER_READ_OK,
-    ANSWER_READ_TIMEOUT,
-    ANSWER_READ_EOF
-};
-
-char normalizeAnswer(char ans);
-bool isValidAnswer(char ans);
-bool isValidDifficulty(const string& difficulty);
-string normalizeDifficulty(const string& difficulty);
 
 #ifndef _WIN32
 class TerminalRawMode {
